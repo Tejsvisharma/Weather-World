@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+    <title>Weather World</title>
+    <link rel="shortcut icon" href="./assest/weather_favicon.png" type="image/png">
+</head>
+
+<body>
+    <div id="wrapper">
+        <video autoplay muted loop playsinline preload="auto" id="back-video" class="mainWrapper">
+            <source src="" type="video/mp4" id="background-video" class="mainWrapper">
+        </video>
+        <!-- upper box -->
+        <div class="upper-box">
+            <div class="left-upper-box">
+                <div id="weather_text">Weather:</div>
+                <div class="current-location">
+                    <img id="location-img" ; src="./assest/location.png" alt="">
+                    <div id="your-location">Your Location</div>
+                </div>
+            </div>
+            <div class="search-tab">
+                <input type="text" placeholder="Search..." id="input-box" autocomplete="off">
+                <ul id="suggestions"></ul>
+                <button id="crossbtn" onclick=cleanInputTab()>⨉</button>
+                <button id="search-btn">🔍</button>
+            </div>
+        </div>
+
+
+        <!-- main display -->
+        <div class="main-display mainWrapper">
+            <div class="main-info">
+                <h3 id="day_text">Today's Weather Forecast</h3>
+                <div id="day-time"></div>
+                <div class="show_temp">
+                    <div id="temp-display"></div>
+                    <ps id="temp_parameter">℃</p>
+                </div>
+                <p id="feel-temp"></p>
+                <!-- <div class="main_display_bottom">
+                </div> -->
+            </div>
+            <div class="city-address">
+                <div id="get-address"></div>
+                <img id="country-flag" ; src="" alt="">
+
+            </div>
+
+            <div class="aditional-info-div">
+                <img id="weather-img" ; src="" alt="">
+                <div class="aditional-info">
+                    <h2 id="day-condition"></h2>
+                    <div class="other-parameters">
+
+                        <div id="rain-info">
+                            <img src="./assest/precipitation.png" alt="">
+                            <p id="rain-value"></p>
+                        </div>
+                        <div id="humidity-info">
+                            <img src="./assest/humidity.png" alt="">
+                            <p id="humidity-value"></p>
+                        </div>
+                        <div id="wind-info">
+                            <img src="./assest/wind.png" alt="">
+                            <p id="wind-value"></p>
+                        </div>
+                        <div id="cloud-info">
+                            <img src="./assest/cloud.png" alt="">
+                            <p id="cloud-value"></p>
+                        </div>
+                        <!-- <div id="dew-info">
+                            <img src="./assest/dew-point.png" alt="">
+                            <p id="dew-value"></p>
+                        </div>
+                        <div id="wiind-dir-info">
+                            <img src="./assest/direction.png" alt="">
+                            <p id="wind-dir-value"></p>
+                        </div>
+                        <div id="pressure-info">
+                            <img src="./assest/pressure.png" alt="">
+                            <p id="pressure-value"></p>
+                        </div> -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- day data -->
+        <div class="whole_day mainWrapper">
+            <div class="day-data">
+                <div class="options">
+                    <div id="temp-option" select-options>
+                        <img src="./assest/temp-option.png" alt="">
+                        <p>Temperature</p>
+                    </div>
+                    <div id="wind-option" select-options>
+                        <img src="./assest/wind.png" alt="">
+                        <p>Wind</p>
+                    </div>
+                    <div id="humidity-option" select-options>
+                        <img src="./assest/humidity.png" alt="">
+                        <p>Humidity</p>
+                    </div>
+                    <div id="precipitation-option" select-options>
+                        <img src="./assest/precipitation.png" alt="">
+                        <p>Precipitation</p>
+                    </div>
+                </div>
+
+                <div class="time-list">
+                    <p id="t1">12am</p>
+                    <p id="t2">3am</p>
+                    <p id="t3">6am</p>
+                    <p id="t4">9am</p>
+                    <p id="t5">12pm</p>
+                    <p id="t6">3pm</p>
+                    <p id="t7">6pm</p>
+                    <p id="t8">9pm</p>
+                </div>
+
+                <div class="weatherCondition">
+                    <img id="img1" ;src="" alt="">
+                    <img id="img2" ;src="" alt="">
+                    <img id="img3" ;src="" alt="">
+                    <img id="img4" ;src="" alt="">
+                    <img id="img5" ;src="" alt="">
+                    <img id="img6" ;src="" alt="">
+                    <img id="img7" ;src="" alt="">
+                    <img id="img8" ;src="" alt="">
+                </div>
+                <div class="hourly-info">
+                    <div class="hourly_temp" hourly-data>
+                        <p id="temp1"></p>
+                        <p id="temp2"></p>
+                        <p id="temp3"></p>
+                        <p id="temp4"></p>
+                        <p id="temp5"></p>
+                        <p id="temp6"></p>
+                        <p id="temp7"></p>
+                        <p id="temp8"></p>
+                    </div>
+                    <div class="hourly_wind" hourly-data>
+                        <p id="wind1"></p>
+                        <p id="wind2"></p>
+                        <p id="wind3"></p>
+                        <p id="wind4"></p>
+                        <p id="wind5"></p>
+                        <p id="wind6"></p>
+                        <p id="wind7"></p>
+                        <p id="wind8"></p>
+                    </div>
+                    <div class="hourly_humidity" hourly-data>
+                        <p id="humid1"></p>
+                        <p id="humid2"></p>
+                        <p id="humid3"></p>
+                        <p id="humid4"></p>
+                        <p id="humid5"></p>
+                        <p id="humid6"></p>
+                        <p id="humid7"></p>
+                        <p id="humid8"></p>
+                    </div>
+                    <div class="hourly_pop" hourly-data>
+                        <p id="pop1"></p>
+                        <p id="pop2"></p>
+                        <p id="pop3"></p>
+                        <p id="pop4"></p>
+                        <p id="pop5"></p>
+                        <p id="pop6"></p>
+                        <p id="pop7"></p>
+                        <p id="pop8"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weelky Text -->
+        <div class="weekly-text mainWrapper">Weelky Forecast:</div>
+
+        <!-- weelky display -->
+        <div class="week-display mainWrapper">
+            <div class="day1" weekday>
+                <p id="day1-date" daydate></p>
+                <img id="day1-img" ;src="" alt="">
+                <p id="day1-max-temp" maxtemp></p>
+                <p id="day1-min-temp" mintemp></p>
+                <p id="day1-weather" dayweather></p>
+                <p id="day1-rain" dayrain></p>
+                <p id="day1-humidity" dayhumidity></p>
+            </div>
+            <div class="day2" weekday>
+                <p id="day2-date" daydate></p>
+                <img id="day2-img" ;src="" alt="">
+                <p id="day2-max-temp" maxtemp></p>
+                <p id="day2-min-temp" mintemp></p>
+                <p id="day2-weather" dayweather></p>
+                <p id="day2-rain" dayrain></p>
+                <p id="day2-humidity" dayhumidity></p>
+            </div>
+            <div class="day3" weekday>
+                <p id="day3-date" daydate></p>
+                <img id="day3-img" ;src="" alt="">
+                <p id="day3-max-temp" maxtemp></p>
+                <p id="day3-min-temp" mintemp></p>
+                <p id="day3-weather" dayweather></p>
+                <p id="day3-rain" dayrain></p>
+                <p id="day3-humidity" dayhumidity></p>
+            </div>
+            <div class="day4" weekday>
+                <p id="day4-date" daydate></p>
+                <img id="day4-img" ;src="" alt="">
+                <p id="day4-max-temp" maxtemp></p>
+                <p id="day4-min-temp" mintemp></p>
+                <p id="day4-weather" dayweather></p>
+                <p id="day4-rain" dayrain></p>
+                <p id="day4-humidity" dayhumidity></p>
+            </div>
+            <div class="day5" weekday>
+                <p id="day5-date" daydate></p>
+                <img id="day5-img" ;src="" alt="">
+                <p id="day5-max-temp" maxtemp></p>
+                <p id="day5-min-temp" mintemp></p>
+                <p id="day5-weather" dayweather></p>
+                <p id="day5-rain" dayrain></p>
+                <p id="day5-humidity" dayhumidity></p>
+            </div>
+            <div class="day6" weekday>
+                <p id="day6-date" daydate></p>
+                <img id="day6-img" ;src="" alt="">
+                <p id="day6-max-temp" maxtemp></p>
+                <p id="day6-min-temp" mintemp></p>
+                <p id="day6-weather" dayweather></p>
+                <p id="day6-rain" dayrain></p>
+                <p id="day6-humidity" dayhumidity></p>
+            </div>
+            <div class="day7" weekday>
+                <p id="day7-date" daydate></p>
+                <img id="day7-img" ;src="" alt="">
+                <p id="day7-max-temp" maxtemp></p>
+                <p id="day7-min-temp" mintemp></p>
+                <p id="day7-weather" dayweather></p>
+                <p id="day7-rain" dayrain></p>
+                <p id="day7-humidity" dayhumidity></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="second-wrapper">
+        <div id="error-display"></div>
+    </div>
+    <div class="loader">
+        <p>Loading...</p>
+        <img src="./assest/loading.gif" alt="">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
